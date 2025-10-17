@@ -1,22 +1,35 @@
 /* Basic layout and typography for the portfolio */
 :root {
   --container-width: 960px;
-  --accent: #007acc;
-  --muted: #666;
+  --accent: #0b79d0; /* primary brand color */
+  --accent-2: #065a9c; /* darker accent */
+  --muted: #6b7280;
+  --bg: #f7fafc;
+  --card-bg: #ffffff;
+  --radius: 10px;
+  --max-content-width: 980px;
+  --fw-regular: 400;
+  --fw-medium: 600;
+  --fw-strong: 700;
+  --base-font-size: 16px;
 }
 * {
   box-sizing: border-box;
 }
 body {
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: var(--base-font-size);
+  line-height: 1.6;
   margin: 0;
-  color: #111;
+  color: #0f172a;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .container {
-  max-width: var(--container-width);
+  max-width: var(--max-content-width);
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem 1.25rem;
 }
 
 /* Ensure sections that use both .container and .card are centered
@@ -28,18 +41,26 @@ body {
   box-sizing: border-box;
 }
 .site-header {
-  background: #f7f7f7;
-  border-bottom: 1px solid #e5e5e5;
+  background: white;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 .site-header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
 }
 .logo {
-  font-weight: 700;
-  color: var(--accent);
+  font-weight: var(--fw-strong);
+  color: var(--accent-2);
   text-decoration: none;
+  font-size: 1.05rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
 }
 .nav-list {
   list-style: none;
@@ -47,24 +68,33 @@ body {
   padding: 0;
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 .nav-list a {
   text-decoration: none;
-  color: #111;
+  color: #0f172a;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+}
+.nav-list a:hover {
+  background: rgba(11, 121, 208, 0.06);
+  color: var(--accent-2);
 }
 .hero {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
-  padding: 2rem 0;
+  padding: 3rem 0 2rem 0;
 }
 .profile-img {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  background: #ddd;
+  background: #e6eef8;
   display: block;
   object-fit: cover; /* in case a raster image is used later */
+  padding: 8px;
+  box-shadow: 0 6px 18px rgba(11, 121, 208, 0.08);
 }
 
 /* allow the hero text to take remaining space and prevent overflow */
@@ -72,12 +102,23 @@ body {
   flex: 1 1 auto;
   min-width: 0; /* helps with truncation inside flex */
 }
+.hero-text h1 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+}
+.hero-text p {
+  color: var(--muted);
+  margin: 0 0 1rem 0;
+}
+.hero .btn {
+  font-weight: 600;
+}
 .card {
-  background: #fff;
-  padding: 1rem;
-  margin: 1.25rem auto;
-  border: 1px solid #eee;
-  border-radius: 6px;
+  background: var(--card-bg);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem auto;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
 }
 
 /* Center headings and paragraphs inside cards but keep lists readable */
@@ -93,19 +134,58 @@ body {
   text-align: left;
   display: inline-block;
   margin: 0 auto;
+  padding-left: 1rem;
 }
+
+/* Skills: show as horizontal wrapping grid of pill chips */
+#skills ul {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(auto, max-content);
+  gap: 0.5rem 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+}
+
+#skills li {
+  background: rgba(11, 121, 208, 0.08);
+  color: var(--accent-2);
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+@media (max-width: 520px) {
+  #skills ul {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #skills li {
+    justify-self: center;
+  }
+}
+/* cleaned up accidental rules */
+/* keep default h1 rule below */
 h1 {
   margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  color: #0b1726;
 }
 .btn {
   display: inline-block;
-  background: var(--accent);
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
   color: #fff;
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(11, 121, 208, 0.12);
+}
+.btn:hover {
+  transform: translateY(-1px);
 }
 .project {
   margin-bottom: 1rem;
@@ -164,5 +244,21 @@ button.btn {
   .site-header .container {
     flex-direction: column;
     gap: 0.5rem;
+  }
+}
+
+/* Projects grid and responsive tweaks */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 2rem 0;
+  }
+  .hero-text h1 {
+    font-size: 1.6rem;
   }
 }
