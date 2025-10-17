@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a href="#home" class="logo">Your Name</a>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero container">
+        <img
+          src="assets/profile.svg"
+          alt="Profile picture of Your Name"
+          class="profile-img"
+        />
+        <div class="hero-text">
+          <h1>Hello, I'm Your Name</h1>
+          <p>
+            Welcome to my portfolio. I'm a web developer learning HTML, building
+            simple and semantic pages.
+          </p>
+          <p><a href="#projects" class="btn">See my work</a></p>
+        </div>
+      </section>
+
+      <section id="about" class="container card">
+        <h2>About Me</h2>
+        <p>
+          Write a short bio here. Mention your background, interests, and what
+          you're learning.
+        </p>
+      </section>
+
+      <section id="skills" class="container card">
+        <h2>Skills</h2>
+        <ul>
+          <li>HTML5</li>
+          <li>Basic CSS</li>
+          <li>Version control (Git)</li>
+          <li>Problem solving</li>
+        </ul>
+      </section>
+
+      <section id="projects" class="container card">
+        <h2>Projects</h2>
+        <article class="project">
+          <h3>Personal Bio Page</h3>
+          <p>A simple personal bio page built with semantic HTML.</p>
+          <p><a href="#" class="btn">View project</a></p>
+        </article>
+
+        <article class="project">
+          <h3>Contact Form Demo</h3>
+          <p>A small contact form that validates input on the client side.</p>
+          <p><a href="#contact" class="btn">Try the form</a></p>
+        </article>
+      </section>
+
+      <section id="contact" class="container card">
+        <h2>Contact Me</h2>
+        <p>
+          If you'd like to get in touch, send a message using the form below.
+        </p>
+
+        <form id="contact-form" novalidate>
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Your full name"
+          />
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="you@example.com"
+          />
+
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            placeholder="Write your message..."
+          ></textarea>
+
+          <button type="submit" class="btn">Send Message</button>
+          <p id="form-status" class="sr-only" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer container">
+      <p>&copy; <span id="year"></span> Your Name — Built with HTML5</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
